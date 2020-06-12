@@ -1,0 +1,58 @@
+@RunWith(AndroidJUnit4.class)
+@SmallTest
+public class ChangePinTest {
+
+    private ChangePinFragment changePinFragment = new ChangePinFragment();
+
+    @Rule
+    public ActivityTestRule<MainActivity> mainActivity
+            = new ActivityTestRule<>(MainActivity.class, false, true);
+
+    @Before
+    public void setUp() {
+        mainActivity
+                .getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragmentContainer, changePinFragment)
+                .commit();
+    }
+
+    @Test
+    public void fillOldPinFieldWithCorrectOldPin() {
+        onView(withId(R.id.oldPinField))
+                .perform(click(), clearText(), typeText(ValuesForTests.CorrectPin));
+    }
+
+    @Test
+    public void fillNewPinFieldWithCorrectPin() {
+        onView(withId(R.id.newPinField))
+                .perform(click(), clearText(), typeText(ValuesForTests.CorrectPin));
+    }
+
+    @Test
+    public void fillRepeatNewPinFieldWithCorrectPin() {
+        onView(withId(R.id.repeatNewPinField))
+                .perform(click(), clearText(), typeText(ValuesForTests.CorrectPin));
+    }
+
+    @Test
+    public void clickConfirmButton() {
+        onView(withId(R.id.confirmButton))
+                .check(matches(isEnabled()))
+                .perform(click());
+    }
+
+    @Test
+    public void isNavigationBarVisible() {
+        onView(withId(R.id.navigationBar))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isMoreIconPossibleToClick() {
+        onView(withId(R.id.moreIcon))
+                .perform(click())
+                .check(matches(isDisplayed()));
+    }
+}
