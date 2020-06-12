@@ -1,0 +1,46 @@
+@RunWith(AndroidJUnit4.class)
+@SmallTest
+public class ResetPinTest {
+
+    private ResetPinFragment resetPinFragment = new ResetPinFragment();
+    private ScreenType screenType;
+
+    @Rule
+    public ActivityTestRule<MainActivity> mainActivity
+            = new ActivityTestRule<>(MainActivity.class, false, true);
+
+    @Before
+    public void setUp() {
+        mainActivity
+                .getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragmentContainer, resetPinFragment)
+                .commit();
+    }
+
+    @Test
+    public void fillPasswordFieldWithCorrectPassword() {
+        onView(withId(R.id.passwordField))
+                .perform(click(), clearText(), typeText(ValuesForTests.CorrectPassword));
+    }
+
+    @Test
+    public void fillNewPinFieldWithCorrectPin() {
+        onView(withId(R.id.newPinField))
+                .perform(click(), clearText(), typeText(ValuesForTests.CorrectPin));
+    }
+
+    @Test
+    public void fillRepeatedPinFieldWithCorrectPin() {
+        onView(withId(R.id.repeatedPinField))
+                .perform(click(), clearText(), typeText(ValuesForTests.CorrectPin));
+    }
+
+    @Test
+    public void clickResetPinButton() {
+        onView(withId(R.id.resetPinButton))
+                .check(matches(isEnabled()))
+                .perform(click());
+    }
+}
