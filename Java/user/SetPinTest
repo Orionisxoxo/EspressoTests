@@ -1,0 +1,56 @@
+@RunWith(AndroidJUnit4.class)
+@SmallTest
+public class SetPinTest {
+
+    private SetPinFragment setPinFragment = new SetPinFragment();
+
+    @Rule
+    public ActivityTestRule<MainActivity> mainActivity
+            = new ActivityTestRule<>(MainActivity.class, false, true);
+
+    @Before
+    public void setUp() {
+        mainActivity
+                .getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragmentContainer, setPinFragment)
+                .commit();
+    }
+
+    @Test
+    public void fillPinFieldWithCorrectPin() {
+        onView(withId(R.id.pinText))
+                .perform(click(), clearText(), typeText(ValuesForTests.CorrectPin));
+    }
+
+    @Test
+    public void fillRepeatPinFieldWithCorrectPn() {
+        onView(withId(R.id.repeatPinText))
+                .perform(click(), clearText(), typeText(ValuesForTests.CorrectPin));
+    }
+
+    @Test
+    public void checkSetPinButtonIsNotEnable() {
+        onView(withId(R.id.setPinButton))
+                .check(matches(not(isEnabled())));
+    }
+
+    @Test
+    public void clickSetPinButton() {
+        fillPinFieldWithCorrectPin();
+        fillRepeatPinFieldWithCorrectPn();
+
+        onView(withId(R.id.setPinButton))
+                .perform(closeSoftKeyboard())
+                .check(matches(isEnabled()))
+                .perform(click());
+    }
+
+    @Test
+    public void clickFingerPrintSwitch() {
+        onView(withId(R.id.fingerprintSwitch))
+                .check(matches(isEnabled()))
+                .perform(click());
+    }
+}
