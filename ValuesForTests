@@ -1,0 +1,8 @@
+public class ValuesForTests {
+
+    public static final String CorrectEmail = "test1@test.pl";
+    public static final String CorrectPrefix = "48";
+    public static final String CorrectPhoneNumber = "123456789";
+    public static final String CorrectPassword = "Test123?";
+    public static final String CorrectPin = "1234";
+}
