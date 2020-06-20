@@ -1,0 +1,11 @@
+class RegistrationScreen : Screen<RegistrationScreen>() {
+
+    val emailField = KEditText { withId(R.id.emailField) }
+    val prefixArrowImage = KImageView { withId(R.id.arrow) }
+    val phoneNumberField = KEditText { withId(R.id.phoneNumberField) }
+    val passwordField = KEditText { withId(R.id.passwordField) }
+    val repeatedPasswordField = KEditText { withId(R.id.repeatedPasswordField) }
+    val termsAndConditionsCheckBox = KCheckBox { withId(R.id.termsAndConditionsRadioButton) }
+    val newsletterCheckBox = KCheckBox { withId(R.id.newsletterRadioButton) }
+    val registerButton = KButton { withId(R.id.registerButton) }
+}
