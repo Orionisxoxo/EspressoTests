@@ -1,0 +1,65 @@
+@RunWith(AndroidJUnit4::class)
+@SmallTest
+class LoginTest : BasicsForTests() {
+
+    private val loginFragment = LoginFragment()
+    private val loginScreen = LoginScreen()
+
+    @Before
+    fun setUp() {
+        openFragment(loginFragment)
+    }
+
+    @Test
+    fun openListOfPrefixes() {
+        BaristaSleepInteractions.sleep(500)
+        loginScreen {
+            prefixArrowImage {
+                isDisplayed()
+                click()
+            }
+        }
+    }
+
+    @Test
+    fun fillPhoneNumberFieldWithCorrectPhoneNumber() {
+        loginScreen {
+            clickAndTypeText(phoneNumberField, ValuesForTests.CorrectPhoneNumber)
+        }
+    }
+
+    @Test
+    fun fillPasswordFieldWithCorrectPassword() {
+        loginScreen {
+            clickAndTypeText(passwordField, ValuesForTests.CorrectPassword)
+        }
+    }
+
+    @Test
+    fun clickResetPasswordTextToOpenResetPasswordView() {
+        loginScreen {
+            resetPasswordText {
+                isClickable()
+                click()
+            }
+        }
+    }
+
+    @Test
+    fun clickLoginButton() {
+        BaristaSleepInteractions.sleep(400)
+        loginScreen {
+            checkButtonAndClick(loginButton)
+        }
+    }
+
+    @Test
+    fun clickRegistrationTextToOpenRegistrationView() {
+        loginScreen {
+            registerText {
+                isClickable()
+                click()
+            }
+        }
+    }
+}
