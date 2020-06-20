@@ -1,9 +1,0 @@
-class LoginScreen : Screen<LoginScreen>() {
-
-//    val prefixArrow = KSpinner {withId(R.id.arrow)}
-    val phoneNumberField = KEditText {withId(R.id.phoneNumberText)}
-    val passwordField = KEditText {withId(R.id.passwordText)}
-    val resetPasswordText = KTextView {withId(R.id.forgotPassword)}
-    val loginButton = KButton {withId(R.id.loginButton)}
-    val registerText = KButton {withId(R.id.register)}
-}
