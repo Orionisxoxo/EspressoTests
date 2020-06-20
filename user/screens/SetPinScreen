@@ -1,0 +1,7 @@
+class SetPinScreen : Screen<SetPinScreen>() {
+
+    val pinField = KEditText { withId(R.id.pinText) }
+    val repeatedPinField = KEditText { withId(R.id.repeatPinText) }
+    val setPinButton = KButton { withId(R.id.setPinButton) }
+    val fingerPrintSwitch = KSwitch { withId(R.id.fingerprintSwitch) }
+}
