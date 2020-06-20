@@ -1,0 +1,5 @@
+object AssertionTexts {
+
+    const val setNewPasswordDescription = "Wpisz kod autoryzacyjny, który wysłaliśmy na podany adres e-mail."
+    const val resetPasswordDescription = "Podaj adres e-mail użyty podczas rejestracji, na który wyślemy Ci kod autoryzacyjny."
+}
