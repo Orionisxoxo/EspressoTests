@@ -1,0 +1,74 @@
+@RunWith(AndroidJUnit4::class)
+@SmallTest
+class RegistrationTest : BasicsForTests() {
+
+    private val registrationFragment = RegistrationFragment()
+    private val registrationScreen = RegistrationScreen()
+
+    @Before
+    fun setUp() {
+        openFragment(registrationFragment)
+    }
+
+    @Test
+    fun fillEmailFieldWithCorrectAddress() {
+        registrationScreen {
+            clickAndTypeText(emailField, ValuesForTests.CorrectEmail)
+        }
+    }
+
+    @Test
+    fun openListOfPrefixes() {
+        registrationScreen {
+            prefixArrowImage {
+                isDisplayed()
+                click()
+            }
+        }
+    }
+
+    @Test
+    fun fillEmailFieldWithCorrectPhoneNumber() {
+        registrationScreen {
+            clickAndTypeText(phoneNumberField, ValuesForTests.CorrectPhoneNumber)
+        }
+    }
+
+    @Test
+    fun fillPasswordFieldWithCorrectPassword() {
+        registrationScreen {
+            clickAndTypeText(passwordField, ValuesForTests.CorrectPassword)
+        }
+    }
+
+    @Test
+    fun fillRepeatedPasswordFieldWithCorrectPassword() {
+        registrationScreen {
+            clickAndTypeText(repeatedPasswordField, ValuesForTests.CorrectPassword)
+        }
+    }
+
+    @Test
+    fun checkTermsAndConditionsCheckBox() {
+        registrationScreen {
+            changeAndCheckCheckBoxState(termsAndConditionsCheckBox)
+        }
+    }
+
+    @Test
+    fun checkNewsletterCheckBox() {
+        registrationScreen {
+            changeAndCheckCheckBoxState(newsletterCheckBox)
+        }
+    }
+
+    @Test
+    fun clickRegistrationButton() {
+        registrationScreen {
+            registerButton {
+                scrollTo()
+            }
+            checkButtonAndClick(registerButton)
+        }
+    }
+}
