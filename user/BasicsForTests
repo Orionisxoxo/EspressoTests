@@ -1,0 +1,37 @@
+open class BasicsForTests {
+
+    @get:Rule
+    var mainActivity = ActivityTestRule(MainActivity::class.java, false, true)
+
+    fun openFragment(invokedFrament: Fragment) {
+        mainActivity
+                .activity
+                .supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragmentContainer, invokedFrament)
+                .commit()
+    }
+
+    fun clickAndTypeText(kEditText: KEditText, text: String) {
+        with(kEditText) {
+            click()
+            clearText()
+            typeText(text)
+        }
+    }
+
+    fun checkButtonAndClick(kButton: KButton) {
+        with(kButton) {
+            isEnabled()
+            click()
+        }
+    }
+
+    fun changeAndCheckCheckBoxState(kCheckBox: KCheckBox) {
+        with(kCheckBox) {
+            isNotChecked()
+            click()
+            isChecked()
+        }
+    }
+}
