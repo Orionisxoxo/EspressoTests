@@ -1,0 +1,8 @@
+object ValuesForTests {
+
+    const val CorrectEmail = "upaidTest@upaid.pl"
+    const val CorrectPhoneNumber = "123456789"
+    const val CorrectPassword = "Qwerty123"
+    const val CorrectPin = "1234"
+    const val AuthorizationCode = "912911"
+}
