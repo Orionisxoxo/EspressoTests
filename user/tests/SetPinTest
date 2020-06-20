@@ -1,0 +1,57 @@
+@RunWith(AndroidJUnit4::class)
+@SmallTest
+class SetPinTest : BasicsForTests() {
+
+    private val setPinFragment = SetPinFragment()
+    private val setPinScreen = SetPinScreen()
+
+    @Before
+    fun setUp() {
+        openFragment(setPinFragment)
+    }
+
+    @Test
+    fun fillPinFieldWithCorrectPin() {
+        setPinScreen {
+            clickAndTypeText(pinField, ValuesForTests.CorrectPin)
+        }
+    }
+
+    @Test
+    fun fillRepeatPinFieldWithCorrectPn() {
+        setPinScreen {
+            clickAndTypeText(repeatedPinField, ValuesForTests.CorrectPin)
+        }
+    }
+
+    @Test
+    fun checkSetPinButtonIsNotClickable() {
+        setPinScreen {
+            setPinButton {
+                IsNot.not(isClickable())
+            }
+        }
+    }
+
+    @Test
+    fun clickSetPinButton() {
+        fillPinFieldWithCorrectPin()
+        fillRepeatPinFieldWithCorrectPn()
+        setPinScreen {
+            setPinButton {
+                Espresso.closeSoftKeyboard()
+            }
+            checkButtonAndClick(setPinButton)
+        }
+    }
+
+    @Test
+    fun clickFingerPrintSwitch() {
+        setPinScreen {
+            fingerPrintSwitch {
+                isNotSelected()
+                click()
+            }
+        }
+    }
+}
